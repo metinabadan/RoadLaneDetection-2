@@ -36,7 +36,8 @@ def process(image):
     width = image.shape[1]
     colorChannel = image.shape[2]
 
-    vercitesOfRequiredPartOfImage = [(-100,height),(width/2,height*7/10),(width-300,height)]
+    #vercitesOfRequiredPartOfImage = [(-100,height),(width/2,height*7/10),(width-300,height)]
+    vercitesOfRequiredPartOfImage = [(100, height), (950, height), (650,540)]
 
     grayImage = cv2.cvtColor(image,cv2.COLOR_RGB2GRAY)
     cannyImage = cv2.Canny(grayImage,50,300)
@@ -50,8 +51,8 @@ def process(image):
                             theta = np.pi/180,
                             threshold=30,
                             lines=np.array([]),
-                            minLineLength=50,
-                            maxLineGap=20)
+                            minLineLength=20,
+                            maxLineGap=60)
 
     imageWithLines = drawLines(image,lines)
 
